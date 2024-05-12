@@ -1,17 +1,16 @@
 .example-container {
   width: 600px;
 
-  @apply px-3 flex flex-col items-center align-top
+  @apply bg-gray-900 px-3 flex flex-col items-center align-top
 }
 
 .example-list {
-  border: solid 1px #ccc;
+  border: solid 1px ;
   min-height: 60px;
-  background: white;
   border-radius: 4px;
   overflow: hidden;
   display: block;
-  @apply w-full
+  @apply w-full text-sm bg-gray-900
 }
 
 h2{
@@ -23,17 +22,19 @@ h2{
 }
 
 .example-box {
-  padding: 20px 10px;
-  border-bottom: solid 1px #ccc;
-  color: rgba(0, 0, 0, 0.87);
-  display: flex;
+  @apply py-5 px-3 border-b-2 text-gray-500
+  flex flex-row items-center justify-between
+  box-border cursor-move bg-gray-800 text-xl;
+  /* border-bottom: solid 1px #ccc; */
+  /* color: rgba(0, 0, 0, 0.87); */
+  /* display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: space-between;
-  box-sizing: border-box;
+  justify-content: space-between; */
+  /* box-sizing: border-box;
   cursor: move;
   background: white;
-  font-size: 14px;
+  font-size: 14px; */
 }
 
 .cdk-drag-preview {
