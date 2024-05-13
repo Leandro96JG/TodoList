@@ -1,19 +1,21 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MaterialModule } from '../material/material.module';
-import { DragAndDropComponent } from './components/drag-and-drop/drag-and-drop.component';
 
+import { TodoListRoutingModule } from './todo-list-routing.module';
+import { LayoutPageComponent } from './pages/layout-page/layout-page.component';
+import { InputTaskComponent } from './components/input-task/input-task.component';
+import { MaterialModule } from '../material/material.module';
 
 
 @NgModule({
   declarations: [
-    DragAndDropComponent
+    LayoutPageComponent,
+    InputTaskComponent
   ],
   imports: [
-    CommonModule,
     MaterialModule,
-  ],
-
-  exports:[DragAndDropComponent]
+    CommonModule,
+    TodoListRoutingModule
+  ]
 })
 export class TodoListModule { }

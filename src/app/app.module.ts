@@ -4,8 +4,6 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { TodoListModule } from './todo-list/todo-list.module';
-import { SharedModule } from './shared/shared.module';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { MaterialModule } from './material/material.module';
 @NgModule({
@@ -15,8 +13,6 @@ import { MaterialModule } from './material/material.module';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    TodoListModule,
-    SharedModule,
     BrowserAnimationsModule,
     MaterialModule,
   ],

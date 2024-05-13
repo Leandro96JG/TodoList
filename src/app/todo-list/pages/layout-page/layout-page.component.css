@@ -1,0 +1,57 @@
+
+
+.input-task{
+
+@apply block w-full rounded-2xl border border-neutral-300 bg-transparent
+ py-4 pl-6 pr-20 text-base/6 text-neutral-950 ring-4 ring-transparent
+ transition placeholder:text-neutral-500 focus:border-neutral-950
+ focus:outline-none focus:ring-neutral-950/5
+
+
+}
+
+/*==================HEAD SIDENAV =======================*/
+.head-sidenav{
+@apply flex justify-between items-center
+}
+
+.button-sidenav{
+
+  @apply flex aspect-square items-center justify-center rounded-xl
+  bg-neutral-950 text-gray-400 transition hover:bg-neutral-800
+  h-10 w-14 p-2
+
+}
+
+.taskAdd{
+  @apply flex justify-center text-yellow-300 my-1
+}
+
+
+/*================== BODY =======================*/
+
+.button-side{
+  @apply flex aspect-square items-center justify-center rounded-xl
+   bg-neutral-950 text-gray-300 transition hover:bg-neutral-800
+   h-14 w-full p-2
+
+}
+/* Contenedor de los drag and drop */
+.container-drags{
+ @apply sm:w-1/2 flex justify-evenly
+}
+
+/* Contenedor de cada lista */
+.container-drag{
+@apply w-1/2 m-1
+
+}
+
+/* Contenedor de cada una de las lista */
+.item-drop{
+@apply p-2 cursor-move
+}
+
+.h2-title{
+  @apply font-bold border-2 rounded-lg text-center my-3 text-gray-300
+}

@@ -1,14 +1,16 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { TodoCreateComponent } from './shared/components/todo-create/todo-create.component';
-import { DragAndDropComponent } from './todo-list/components/drag-and-drop/drag-and-drop.component';
 
 const routes: Routes = [
   {
-    path:'',
-    component:TodoCreateComponent,
-    
+    path: 'todoList',
+    loadChildren: () => import('./todo-list/todo-list.module').then(m => m.TodoListModule)
+  },
+  {
+    path:'**',
+    redirectTo:'todoList',
   }
+
 ];
 
 @NgModule({

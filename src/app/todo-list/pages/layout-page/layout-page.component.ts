@@ -1,20 +1,22 @@
 import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
-import { Component, Input } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
-  selector: 'drag-and-drop',
-  templateUrl: './drag-and-drop.component.html',
-  styleUrl: './drag-and-drop.component.css'
+  selector: 'app-layout-page',
+  templateUrl: './layout-page.component.html',
+  styleUrl: './layout-page.component.css'
 })
-export class DragAndDropComponent {
-
-  @Input()
-  public task?:string='';
-  
+export class LayoutPageComponent {
+  public toogleSide:boolean=false;
 
   todo = ['Get to work', 'Pick up groceries', 'Go home', 'Fall asleep'];
 
   done = ['Get up', 'Brush teeth', 'Take a shower', 'Check e-mail', 'Walk dog'];
+
+ newTask(task:string){
+  if(!task)return;
+  this.todo.push(task);
+ }
 
   drop(event: CdkDragDrop<string[]>) {
     if (event.previousContainer === event.container) {
@@ -28,4 +30,6 @@ export class DragAndDropComponent {
       );
     }
   }
+
+
 }
