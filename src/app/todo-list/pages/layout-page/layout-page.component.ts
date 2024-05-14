@@ -1,13 +1,16 @@
 import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-layout-page',
   templateUrl: './layout-page.component.html',
   styleUrl: './layout-page.component.css'
 })
-export class LayoutPageComponent {
+export class LayoutPageComponent implements OnInit{
+
   public toogleSide:boolean=false;
+
+  public taskAddMesage:boolean=false;
 
   todo = ['Get to work', 'Pick up groceries', 'Go home', 'Fall asleep'];
 
@@ -17,6 +20,17 @@ export class LayoutPageComponent {
   if(!task)return;
   this.todo.push(task);
  }
+
+ ngOnInit(): void {
+  this.taskAdd();
+}
+
+taskAdd(){
+  this.taskAddMesage=true;
+  setTimeout(()=>{
+    this.taskAddMesage=false;
+  },2000);
+}
 
   drop(event: CdkDragDrop<string[]>) {
     if (event.previousContainer === event.container) {

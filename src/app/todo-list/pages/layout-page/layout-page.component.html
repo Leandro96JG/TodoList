@@ -1,11 +1,11 @@
-<mat-sidenav-container fullscreen>
+<mat-sidenav-container fullscreen class=" bg-stone-800">
 
-  <mat-sidenav class="p-3 bg-stone-900" #drawer mode="push">
+  <mat-sidenav class="p-3" #drawer mode="push">
 
 <!-- Contenedor del sidenav -->
 <div class="">
 <div class="head-sidenav">
-<h1 class="text-gray-400 text-xl font-bold m-3">Todo List</h1>
+<h1 class="text-gray-400 text-xl font-bold m-3">Todo Task</h1>
 <button class="button-sidenav" (click)="drawer.toggle(toogleSide=false)">X</button>
 </div>
 <hr class="text-gray-400">
@@ -20,15 +20,15 @@
       <div class="absolute inset-y-1 right-1 flex justify-end">
         <button
           class="flex aspect-square h-full items-center justify-center rounded-xl bg-neutral-950 text-white transition hover:bg-neutral-800"
-          (click)="newTask(inputValue.value)">
+          (click)="newTask(inputValue.value)" (click)="taskAdd()">
          <mat-icon fontIcon="arrow_right"></mat-icon>
 
         </button>
       </div>
     </div>
 
-    <div class="taskAdd">
-      <p class="mx-2">Tarea Agregada</p>
+    <div class="taskAdd" *ngIf="taskAddMesage">
+      <p class="mx-2">Added task</p>
       <mat-icon fontIcon="star"></mat-icon>
     </div>
   </mat-label>
@@ -46,7 +46,7 @@
 <!-- body -->
 <div class="container-all p-4">
     <button class="button-side" (click)="drawer.toggle(toogleSide = true)">
-      Nueva Tarea +
+      New Task +
     </button>
 
 
@@ -56,7 +56,7 @@
   <div class="container-drags columns-2 flex ">
 
     <div class="container-drag">
-      <h2 class="h2-title">To do</h2>
+      <h2 class="h2-title">Tasks</h2>
       <div
        class="list-drag"
        cdkDropList
@@ -64,12 +64,13 @@
        [cdkDropListData]="todo"
        [cdkDropListConnectedTo]="[doneList]"
        (cdkDropListDropped)="drop($event)">
-       <div *ngFor="let item of todo; track item" class="item-drop" cdkDrag> {{item}} </div>
+       <div *ngFor="let item of todo" class="item-drop" cdkDrag> {{item}} </div>
       </div>
 
     </div>
     <div class="container-drag">
-      <h2 class="h2-title">Done</h2>
+      <h2 class="h2-title">Done
+      </h2>
       <div
        class="list-drag"
        cdkDropList
@@ -77,23 +78,25 @@
        [cdkDropListData]="done"
        [cdkDropListConnectedTo]="[todoList]"
        (cdkDropListDropped)="drop($event)">
-       <p *ngFor="let item of done; track item" class="item-drop" cdkDrag> {{item}} </p>
+       <p *ngFor="let item of done" class="item-drop" cdkDrag> {{item}} </p>
       </div>
 
     </div>
-    <!-- <div class="container-drag">
-      <h2>To do</h2>
+    <div class="container-drag">
+      <h2 class="h2-title">Done
+      </h2>
       <div
        class="list-drag"
        cdkDropList
-       #todoList="cdkDropList"
-       [cdkDropListData]="todo"
-       [cdkDropListConnectedTo]="[]"
+       #doneList="cdkDropList"
+       [cdkDropListData]="done"
+       [cdkDropListConnectedTo]="[todoList]"
        (cdkDropListDropped)="drop($event)">
-       <div *ngFor="let item of todo; track item" class="item-drop"> {{item}} </div>
+       <p *ngFor="let item of done" class="item-drop" cdkDrag> {{item}} </p>
       </div>
 
-    </div> -->
+    </div>
+
 
   </div>
 
