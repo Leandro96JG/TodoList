@@ -1,5 +1,7 @@
+import { TodoListService } from './../../services/service.service';
 import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild, inject } from '@angular/core';
+import { TodoListModule } from '../../todo-list.module';
 
 @Component({
   selector: 'app-layout-page',
@@ -12,24 +14,41 @@ export class LayoutPageComponent implements OnInit{
 
   public taskAddMesage:boolean=false;
 
-  todo = ['Get to work', 'Pick up groceries', 'Go home', 'Fall asleep'];
+ public todo:string[] = [];
 
-  done = ['Get up', 'Brush teeth', 'Take a shower', 'Check e-mail', 'Walk dog'];
+ public done:string[] = [];
+
+ public pending:string[]=[];
+
+
+
+  constructor(){}
+
+  ngOnInit(): void {
+  this.todo = this.getItem('todo') || [];
+  this.done = this.getItem('done') || [];
+  this.pending = this.getItem('pending') || [];
+  }
+
+
+
+
 
  newTask(task:string){
   if(!task)return;
   this.todo.push(task);
+  this.taskAdd();
+  this.saveItems('todo',this.todo);
  }
 
- ngOnInit(): void {
-  this.taskAdd();
-}
 
 taskAdd(){
   this.taskAddMesage=true;
   setTimeout(()=>{
     this.taskAddMesage=false;
   },2000);
+
+
 }
 
   drop(event: CdkDragDrop<string[]>) {
@@ -42,8 +61,50 @@ taskAdd(){
         event.previousIndex,
         event.currentIndex,
       );
+     this.saveItems('todo',this.todo);
+     this.saveItems('done',this.done);
+     this.saveItems('pending',this.pending);
+
+
+
     }
+
+
+
   }
+
+  removeTaskTodo(index:number){
+    this.todo.splice(index,1);
+    this.saveItems('todo',this.todo);
+
+  }
+  removeTaskDone(index:number){
+    this.done.splice(index,1);
+    this.saveItems('done',this.done);
+
+  }
+  removeTaskPending(index:number){
+    this.pending.splice(index,1);
+    this.saveItems('pending',this.pending);
+
+  }
+
+
+  saveItems(key:string,listTask:string[]) {
+    this.setItem(key, listTask);
+  }
+
+
+
+  setItem(key: string, value: string[]): void {
+    localStorage.setItem(key, JSON.stringify(value));
+  }
+
+  getItem(key: string): string[] {
+    const value = localStorage.getItem(key);
+    return value ? JSON.parse(value) : null;
+  }
+
 
 
 }

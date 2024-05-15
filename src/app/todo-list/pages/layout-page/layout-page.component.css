@@ -1,11 +1,10 @@
 
-
 .input-task{
 
 @apply block w-full rounded-2xl border border-neutral-300 bg-transparent
  py-4 pl-6 pr-20 text-base/6 text-neutral-950 ring-4 ring-transparent
  transition placeholder:text-neutral-500 focus:border-neutral-950
- focus:outline-none focus:ring-neutral-950/5
+ focus:outline-none focus:ring-neutral-950/5 font-semibold
 
 
 }
@@ -14,6 +13,7 @@
 .head-sidenav{
 @apply flex justify-between items-center
 }
+
 
 .button-sidenav{
 
@@ -24,7 +24,7 @@
 }
 
 .taskAdd{
-  @apply flex justify-center text-yellow-300 my-1
+  @apply flex justify-center text-yellow-300 my-1 font-semibold
 }
 
 
@@ -33,7 +33,7 @@
 .button-side{
   @apply flex aspect-square items-center justify-center rounded-xl
    bg-neutral-950 text-gray-300 transition hover:bg-neutral-800
-   h-14 w-full p-2
+   h-14 w-full p-2 font-bold
 
 }
 /* Contenedor de los drag and drop */
@@ -47,16 +47,60 @@
 .container-drag{
 @apply my-3 mx-3 bg-stone-900 p-3 rounded-lg w-full
 md:w-1/3
-xl:w-1/4 xl:px-6 xl:py-5
+xl:w-1/4 xl:px-6 xl:py-5 align-top min-h-44
 }
 
 /* Titulo de cada tarea */
 .h2-title{
-  @apply font-bold border-2 rounded-lg border-stone-600 text-center py-2 text-gray-300
+  @apply hover:animate-pulse font-bold border-2 text-2xl bg-stone-950 rounded-lg
+   border-stone-600 text-center py-2 text-gray-400
+}
+
+.list-drag{
+  @apply min-h-20;
 }
 
 /* Contenedor de cada una de las lista */
+
 .item-drop{
-@apply p-4 cursor-move bg-stone-700 rounded-lg my-2 sm:text-sm
+@apply flex justify-between
+cursor-move bg-stone-700 rounded-lg my-2 sm:text-sm box-border
 }
 
+/* BUTTON LIST */
+
+.button-item-drop{
+  @apply px-5 py-4 inline-block
+}
+.button-item-drop:hover{
+@apply transition ease-in-out delay-100 scale-125 bg-stone-900 text-red-700
+}
+
+/* Span text list */
+
+.span-item-drop{
+ @apply my-auto
+}
+
+.cdk-drag-placeholder{
+@apply opacity-10 border-dashed border-stone-500
+}
+
+.cdk-drag-animating {
+  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.item-drop:last-child {
+  border: none;
+}
+
+
+.list-drag.cdk-drop-list-dragging .item-drop:not(.cdk-drag-placeholder) {
+  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+/* ANIMACION HOVER CASILLAS */
+
+.item-drop{
+  @apply text-center font-semibold text-xl hover:bg-stone-800 focus:bg-stone-900
+}
