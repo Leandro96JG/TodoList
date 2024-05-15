@@ -63,8 +63,9 @@ xl:w-1/4 xl:px-6 xl:py-5 align-top min-h-44
 /* Contenedor de cada una de las lista */
 
 .item-drop{
+  cursor:url(/assets/move.png),auto;
 @apply flex justify-between
-cursor-move bg-stone-700 rounded-lg my-2 sm:text-sm box-border
+ bg-stone-700 rounded-lg my-2 sm:text-sm box-border
 }
 
 /* BUTTON LIST */
@@ -73,13 +74,13 @@ cursor-move bg-stone-700 rounded-lg my-2 sm:text-sm box-border
   @apply px-5 py-4 inline-block
 }
 .button-item-drop:hover{
-@apply transition ease-in-out delay-100 scale-125 bg-stone-900 text-red-700
+@apply transition ease-in-out delay-100 scale-125 bg-stone-950 rounded-2xl text-red-700
 }
 
 /* Span text list */
 
 .span-item-drop{
- @apply my-auto
+ @apply my-auto pl-5
 }
 
 .cdk-drag-placeholder{

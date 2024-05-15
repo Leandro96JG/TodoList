@@ -1,7 +1,5 @@
-import { TodoListService } from './../../services/service.service';
 import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 import { Component, ElementRef, OnInit, ViewChild, inject } from '@angular/core';
-import { TodoListModule } from '../../todo-list.module';
 
 @Component({
   selector: 'app-layout-page',
